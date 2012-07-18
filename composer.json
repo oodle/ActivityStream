@@ -7,7 +7,6 @@
     "authors": [
         {
             "name": "David Tee",
-            "homepage": "http://nelm.io"
         }
     ],
     "require": {
@@ -18,7 +17,7 @@
         "symfony/yaml": "2.*"
     },
     "autoload": {
-        "psr-0": { "Nelmio\\SolariumBundle": "" }
+        "psr-0": { "Odl\\ActivityStreamBundle": "" }
     },
-    "target-dir": "Nelmio/SolariumBundle"
+    "target-dir": "Odl/ActivityStreamBundle"
 }
