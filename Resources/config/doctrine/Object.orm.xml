@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Odl\ActivityStreamBundle\Entity\Object">
+        <reference-many target-document="Odl\ActivityStreamBundle\Entity\Object" field="attachments">
+            <cascade>
+                <all />
+            </cascade>
+        </reference-many>
+
+        <reference-one target-document="Odl\ActivityStreamBundle\Entity\Object" field="author">
+            <cascade>
+                <all />
+            </cascade>
+        </reference-one>
+        
+        <field name="content" column="content" type="string" length="255" />
+        
+        <field name="displayName" column="display_name" type="string" length="255" />
+
+        <embed-one target-document="Odl\ActivityStreamBundle\Model\MediaLink" field="image" />
+        
+        <field name="objectType" column="objectType" type="string" length="255" />
+        
+        <field name="published" column="published" type="datetime" nullable="true"/>
+        
+        <field name="summary" column="summary" type="string" nullable="true"/>
+        
+        <field name="updated" column="updated" type="datetime" nullable="true" />
+        
+        <field name="downstreamDuplicates" column="downstreamDuplicates" type="array" nullable="true" />
+        
+        <field name="upstreamDuplicates" column="upstreamDuplicates" type="array" nullable="true" />
+        
+    </mapped-superclass>
+
+</doctrine-mapping>
