@@ -1,0 +1,23 @@
+{
+    "name": "odl/activitystreambundle",
+    "description": "Activity Stream Implement.",
+    "keywords": ["solr", "solarium", "search", "timeline", "news feed", "activity", "activity stream"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Tee"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": "2.*",
+        "solarium/solarium": ">=2.4.0"
+    },
+    "require-dev": {
+        "symfony/yaml": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "Odl\\ActivityStreamBundle": "" }
+    },
+    "target-dir": "Odl/ActivityStreamBundle"
+}
