@@ -5,8 +5,6 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="Odl\ActivityStreamBundle\Entity\Activity">
-        <field name="id" column="id" type="string" length="255" id="true"/>
-        
         <indexes>
             <index unique="true" dropDups="true">
                 <key name="id" order="desc" />
@@ -36,7 +34,7 @@
             </cascade>
         </reference-one>
 
-        <field name="published" column="published" type="string" nullable="false"/>
+        <field name="published" column="published" type="datetime" nullable="false"/>
 
         <reference-one target-document="Odl\ActivityStreamBundle\Entity\Object" field="provider">
             <cascade>
@@ -50,7 +48,7 @@
             </cascade>
         </reference-one>
 
-        <field name="title" column="title" type="string" />
+        <field name="title" column="title" type="string" nullable="true"/>
 
         <field name="updated" column="updated" type="datetime" nullable="true" />
 

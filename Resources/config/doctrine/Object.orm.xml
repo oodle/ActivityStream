@@ -17,7 +17,7 @@
             </cascade>
         </reference-one>
         
-        <field name="content" column="content" type="string" length="255" />
+        <field name="content" column="content" type="string" length="255" nullable="true" />
         
         <field name="displayName" column="display_name" type="string" length="255" />
 

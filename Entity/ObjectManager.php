@@ -1,19 +1,20 @@
 <?php
 namespace Odl\ActivityStreamBundle\Entity;
 
+use Doctrine\Common\Util\Debug;
+
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
 
-class ActivityManager
+class ObjectManager
 {
     protected $em;
-    protected $objectManager;
     protected $className;
 
-    public function __construct(EntityManager $em, ObjectManager $objectManager, $className)
+    public function __construct(EntityManager $em, $className)
     {
         $this->em = $em;
         $this->className = $className;
-        $this->objectManager = $objectManager;
     }
 
     /**
@@ -31,29 +32,28 @@ class ActivityManager
     }
 
     /**
-     * Find activity by object id
+     * Find activity by id
      */
     public function findActivitiesByObjectIds(array $ids)
     {
 
     }
 
-    public function delete($id) {
-
-    }
-
     /**
-     * Delete activity that is associated to a given object
+     * Save the object
      *
-     * @param array $ids
+     * @param Object $object
      */
-    public function deleteByObjectIds(array $ids) {
+    public function save(Object $object) {
+        foreach ($object->getAttachments() as $attachment) {
+            $this->save($attachment);
+        }
 
-    }
+        if ($author = $object->getAuthor()) {
+            $this->save($author);
+        }
 
-    public function save(Activity $activity)  {
-        // Tricky part... lets save all objects, maybe mean new object, or existing object
-        $this->em->merge($activity);
+        $this->em->merge($object);
         $this->em->flush();
     }
 }
