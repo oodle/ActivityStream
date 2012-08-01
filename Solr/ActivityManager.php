@@ -58,6 +58,11 @@ class ActivityManager
         $retVal['updated'] = $activity->getUpdated();
         $retVal['published'] = $activity->getPublished();
 
+        if ($actor = $activity->getActor()) {
+            $indexes = $this->getIndexes('actor_', $actor);
+            $retVal = array_merge($retVal, $indexes);
+        }
+
         if ($object = $activity->getObject()) {
             $indexes = $this->getIndexes('object_', $object);
             $retVal = array_merge($retVal, $indexes);

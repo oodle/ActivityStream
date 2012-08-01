@@ -15,5 +15,10 @@
             <argument type="service" id="doctrine.orm.default_entity_manager"></argument>
             <argument>%odl_as.model.object.class%</argument>
         </service>
+        
+        <service id="odl_as.solr.activity_manager" class="Odl\ActivityStreamBundle\Solr\ActivityManager">
+            <argument type="service" id="odl_as.solr_client"></argument>
+            <argument>%odl_as.solr.mapping%</argument>
+        </service>
     </services>
 </container>
