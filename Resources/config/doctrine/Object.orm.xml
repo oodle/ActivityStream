@@ -21,7 +21,7 @@
         
         <field name="displayName" column="display_name" type="string" length="255" />
 
-        <embed-one target-document="Odl\ActivityStreamBundle\Model\MediaLink" field="image" />
+        <field name="image" column="image" type="object" />
         
         <field name="objectType" column="objectType" type="string" length="255" />
         
