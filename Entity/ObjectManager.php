@@ -32,14 +32,6 @@ class ObjectManager
     }
 
     /**
-     * Find activity by id
-     */
-    public function findActivitiesByObjectIds(array $ids)
-    {
-
-    }
-
-    /**
      * Save the object
      *
      * @param Object $object

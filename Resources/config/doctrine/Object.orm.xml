@@ -21,7 +21,7 @@
         
         <field name="displayName" column="display_name" type="string" length="255" />
 
-        <field name="image" column="image" type="object" />
+        <field name="image" column="image" type="object" nullable="true" />
         
         <field name="objectType" column="objectType" type="string" length="255" />
         

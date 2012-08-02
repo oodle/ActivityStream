@@ -26,7 +26,7 @@
             </cascade>
         </reference-one>
 
-        <field name="icon" column="image" type="object" />
+        <field name="icon" column="icon" type="object" nullable="true" />
 
         <reference-one target-document="Odl\ActivityStreamBundle\Entity\Object" field="object">
             <cascade>
