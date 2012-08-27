@@ -1,14 +1,14 @@
 <?php
 namespace Odl\ActivityStreamBundle\Model;
-
 /**
  * Activity serialization
  *
  * @author David
  */
 class Activity
+    extends Property
 {
-	/**
+    /**
      * Provides a permanent, universally unique identifier for the activity in
      * 	the form of an absolute IRI [RFC3987]. An activity SHOULD contain a
      * 	single id property. If an activity does not contain an id property,
@@ -16,45 +16,45 @@ class Activity
      *	non-unique identifier.
      *
      * @var string
-	 */
-	protected $id;
+     */
+    protected $id;
 
-	/**
-	 * Describes the entity that performed the activity. An activity MUST
-	 * 	contain one actor property whose value is a single Object.
-	 *
-	 * @var Object
-	 */
-	protected $actor;
+    /**
+     * Describes the entity that performed the activity. An activity MUST
+     * 	contain one actor property whose value is a single Object.
+     *
+     * @var Object
+     */
+    protected $actor;
 
-	/**
-	 * Natural-language description of the activity encoded as a single JSON
-	 * 	String containing HTML markup. Visual elements such as thumbnail images
-	 * 	MAY be included. An activity MAY contain a content property.
-	 *
+    /**
+     * Natural-language description of the activity encoded as a single JSON
+     * 	String containing HTML markup. Visual elements such as thumbnail images
+     * 	MAY be included. An activity MAY contain a content property.
+     *
      * @var string
-	 */
-	protected $content;
+     */
+    protected $content;
 
-	/**
+    /**
      * Describes the application that generated the activity. An activity MAY
      * 	contain a generator property whose value is a single Object.
      *
      * @var Object
-	 */
-	protected $generator;
+     */
+    protected $generator;
 
-	/**
+    /**
      * Description of a resource providing a visual representation of the object,
      *	intended for human consumption. The image SHOULD have an aspect ratio
      *	of one (horizontal) to one (vertical) and SHOULD be suitable for
      *	presentation at a small size. An activity MAY have an icon property.
      *
      * @var MediaLink
-	 */
-	protected $icon;
+     */
+    protected $icon;
 
-	/**
+    /**
      * Describes the primary object of the activity. For instance, in the
      * activity, "John saved a movie to his wishlist", the object of the activity
      * is "movie". An activity SHOULD contain an object property whose value is a
@@ -62,27 +62,27 @@ class Activity
      * of the activity MAY be implied by context.
      *
      * @var Object
-	 */
-	protected $object;
+     */
+    protected $object;
 
-	/**
-	 * The date and time at which the activity was published. An activity MUST
-	 * 	contain a published property.
-	 *
+    /**
+     * The date and time at which the activity was published. An activity MUST
+     * 	contain a published property.
+     *
      * @var DateTime
-	 */
-	protected $published;
+     */
+    protected $published;
 
-	/**
+    /**
      * Describes the application that published the activity. Note that this is
      * not necessarily the same entity that generated the activity. An activity
      * MAY contain a provider property whose value is a single Object.
      *
      * @var Object
-	 */
-	protected $provider;
+     */
+    protected $provider;
 
-	/**
+    /**
      * Describes the target of the activity. The precise meaning of the activity's
      * target is dependent on the activities verb, but will often be the object
      * the English preposition "to". For instance, in the activity,
@@ -92,249 +92,253 @@ class Activity
      * whose value is a single Object.
      *
      * @var Object
-	 */
-	protected $target;
+     */
+    protected $target;
 
-	/**
-	 * Natural-language title or headline for the activity encoded as a single
-	 * JSON String containing HTML markup. An activity MAY contain a title property.
-	 *
+    /**
+     * Natural-language title or headline for the activity encoded as a single
+     * JSON String containing HTML markup. An activity MAY contain a title property.
+     *
      * @var string
-	 */
-	protected $title;
+     */
+    protected $title;
 
-	/**
+    /**
      * The date and time at which a previously published activity has been
      * 	modified. An Activity MAY contain an updated property.
      *
      * @var DateTime
-	 */
-	protected $updated;
+     */
+    protected $updated;
 
-	/**
-	 * An IRI [RFC3987] identifying a resource providing an HTML representation
-	 * 	of the activity. An activity MAY contain a url property.
-	 *
-	 * @var string
-	 */
-	protected $url;
+    /**
+     * An IRI [RFC3987] identifying a resource providing an HTML representation
+     * 	of the activity. An activity MAY contain a url property.
+     *
+     * @var string
+     */
+    protected $url;
 
-	/**
-	 * Identifies the action that the activity describes. An activity SHOULD
-	 * contain a verb property whose value is a JSON String that is non-empty
-	 * and matches either the "isegment-nz-nc" or the "IRI" production in [RFC3339].
-	 * Note that the use of a relative reference other than a simple name is not allowed.
-	 * If the verb is not specified, or if the value is null, the verb is assumed to be "post".
-	 *
-	 * @var string
-	 */
-	protected $verb;
+    /**
+     * Identifies the action that the activity describes. An activity SHOULD
+     * contain a verb property whose value is a JSON String that is non-empty
+     * and matches either the "isegment-nz-nc" or the "IRI" production in [RFC3339].
+     * Note that the use of a relative reference other than a simple name is not allowed.
+     * If the verb is not specified, or if the value is null, the verb is assumed to be "post".
+     *
+     * @var string
+     */
+    protected $verb;
 
-	/**
-	 * @return the $id
-	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+    public function __construct() {
+        $this->properties = array();
+    }
 
-	/**
-	 * @return the $actor
-	 */
-	public function getActor()
-	{
-		return $this->actor;
-	}
+    /**
+     * @return the $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	/**
-	 * @return the $content
-	 */
-	public function getContent()
-	{
-		return $this->content;
-	}
+    /**
+     * @return the $actor
+     */
+    public function getActor()
+    {
+        return $this->actor;
+    }
 
-	/**
-	 * @return the $generator
-	 */
-	public function getGenerator()
-	{
-		return $this->generator;
-	}
+    /**
+     * @return the $content
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
 
-	/**
-	 * @return the $icon
-	 */
-	public function getIcon()
-	{
-		return $this->icon;
-	}
+    /**
+     * @return the $generator
+     */
+    public function getGenerator()
+    {
+        return $this->generator;
+    }
 
-	/**
-	 * @return the $object
-	 */
-	public function getObject()
-	{
-		return $this->object;
-	}
+    /**
+     * @return the $icon
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
 
-	/**
-	 * @return the $published
-	 */
-	public function getPublished()
-	{
-		return $this->published;
-	}
+    /**
+     * @return the $object
+     */
+    public function getObject()
+    {
+        return $this->object;
+    }
 
-	/**
-	 * @return the $provider
-	 */
-	public function getProvider()
-	{
-		return $this->provider;
-	}
+    /**
+     * @return the $published
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
 
-	/**
-	 * @return the $target
-	 */
-	public function getTarget()
-	{
-		return $this->target;
-	}
+    /**
+     * @return the $provider
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
 
-	/**
-	 * @return the $title
-	 */
-	public function getTitle()
-	{
-		return $this->title;
-	}
+    /**
+     * @return the $target
+     */
+    public function getTarget()
+    {
+        return $this->target;
+    }
 
-	/**
-	 * @return the $updated
-	 */
-	public function getUpdated()
-	{
-		return $this->updated;
-	}
+    /**
+     * @return the $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * @return the $url
-	 */
-	public function getUrl()
-	{
-		return $this->url;
-	}
+    /**
+     * @return the $updated
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
 
-	/**
-	 * @return the $verb
-	 */
-	public function getVerb()
-	{
-		return $this->verb;
-	}
+    /**
+     * @return the $url
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
 
-	/**
-	 * @param string $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
+    /**
+     * @return the $verb
+     */
+    public function getVerb()
+    {
+        return $this->verb;
+    }
 
-	/**
-	 * @param Object $actor
-	 */
-	public function setActor(Object $actor)
-	{
-		$this->actor = $actor;
-	}
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-	/**
-	 * @param string $content
-	 */
-	public function setContent($content)
-	{
-		$this->content = $content;
-	}
+    /**
+     * @param Object $actor
+     */
+    public function setActor(Object $actor)
+    {
+        $this->actor = $actor;
+    }
 
-	/**
-	 * @param Object $generator
-	 */
-	public function setGenerator(Object $generator)
-	{
-		$this->generator = $generator;
-	}
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
 
-	/**
-	 * @param MediaLink $icon
-	 */
-	public function setIcon(MediaLink $icon)
-	{
-		$this->icon = $icon;
-	}
+    /**
+     * @param Object $generator
+     */
+    public function setGenerator(Object $generator)
+    {
+        $this->generator = $generator;
+    }
 
-	/**
-	 * @param Object $object
-	 */
-	public function setObject(Object $object)
-	{
-		$this->object = $object;
-	}
+    /**
+     * @param MediaLink $icon
+     */
+    public function setIcon(MediaLink $icon)
+    {
+        $this->icon = $icon;
+    }
 
-	/**
-	 * @param DateTime $published
-	 */
-	public function setPublished(\DateTime $published)
-	{
-		$this->published = $published;
-	}
+    /**
+     * @param Object $object
+     */
+    public function setObject(Object $object)
+    {
+        $this->object = $object;
+    }
 
-	/**
-	 * @param Object $provider
-	 */
-	public function setProvider(Object $provider)
-	{
-		$this->provider = $provider;
-	}
+    /**
+     * @param DateTime $published
+     */
+    public function setPublished(\DateTime $published)
+    {
+        $this->published = $published;
+    }
 
-	/**
-	 * @param Object $target
-	 */
-	public function setTarget(Object $target)
-	{
-		$this->target = $target;
-	}
+    /**
+     * @param Object $provider
+     */
+    public function setProvider(Object $provider)
+    {
+        $this->provider = $provider;
+    }
 
-	/**
-	 * @param string $title
-	 */
-	public function setTitle($title)
-	{
-		$this->title = $title;
-	}
+    /**
+     * @param Object $target
+     */
+    public function setTarget(Object $target)
+    {
+        $this->target = $target;
+    }
 
-	/**
-	 * @param DateTime $updated
-	 */
-	public function setUpdated(\DateTime $updated)
-	{
-		$this->updated = $updated;
-	}
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * @param string $url
-	 */
-	public function setUrl($url)
-	{
-		$this->url = $url;
-	}
+    /**
+     * @param DateTime $updated
+     */
+    public function setUpdated(\DateTime $updated)
+    {
+        $this->updated = $updated;
+    }
 
-	/**
-	 * @param string $verb
-	 */
-	public function setVerb($verb)
-	{
-		$this->verb = $verb;
-	}
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @param string $verb
+     */
+    public function setVerb($verb)
+    {
+        $this->verb = $verb;
+    }
 }

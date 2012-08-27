@@ -4,10 +4,21 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-<!--     <services>
-        <service id="odl.shop.registration.form.type" class="Odl\ShopBundle\Form\RegistrationFormType">
-            <tag name="form.type" alias="odl_user_registration" />
-            <argument>%fos_user.model.user.class%</argument>
+    <services>
+        <service id="odl_as.activity_manager" class="Odl\ActivityStreamBundle\Entity\ActivityManager">
+            <argument type="service" id="doctrine.orm.default_entity_manager"></argument>
+            <argument type="service" id="odl_as.object_manager"></argument>
+            <argument>%odl_as.model.activity.class%</argument>
         </service>
-    </services> -->
+        
+        <service id="odl_as.object_manager" class="Odl\ActivityStreamBundle\Entity\ObjectManager">
+            <argument type="service" id="doctrine.orm.default_entity_manager"></argument>
+            <argument>%odl_as.model.object.class%</argument>
+        </service>
+        
+        <service id="odl_as.solr.activity_manager" class="Odl\ActivityStreamBundle\Solr\ActivityManager">
+            <argument type="service" id="odl_as.solr_client"></argument>
+            <argument>%odl_as.solr.mapping%</argument>
+        </service>
+    </services>
 </container>
