@@ -5,7 +5,8 @@ namespace Odl\ActivityStreamBundle\Model;
  *
  * @author David
  */
-class Activity extends Property
+class Activity
+    extends Property
 {
     /**
      * Provides a permanent, universally unique identifier for the activity in
@@ -128,6 +129,10 @@ class Activity extends Property
      * @var string
      */
     protected $verb;
+
+    public function __construct() {
+        $this->properties = array();
+    }
 
     /**
      * @return the $id

@@ -134,6 +134,10 @@ class Object extends Property
      */
     protected $upstreamDuplicates;
 
+    public function __construct() {
+        $this->properties = array();
+    }
+
     /**
      * @return the $attachments
      */

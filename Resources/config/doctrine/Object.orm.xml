@@ -5,38 +5,29 @@
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="Odl\ActivityStreamBundle\Entity\Object">
-        <reference-many target-document="Odl\ActivityStreamBundle\Entity\Object" field="attachments">
-            <cascade>
-                <all />
-            </cascade>
-        </reference-many>
 
-        <reference-one target-document="Odl\ActivityStreamBundle\Entity\Object" field="author">
-            <cascade>
-                <all />
-            </cascade>
-        </reference-one>
-        
         <field name="content" column="content" type="string" length="255" nullable="true" />
-        
+
         <field name="displayName" column="display_name" type="string" length="255" />
 
         <field name="image" column="image" type="object" nullable="true" />
-        
+
         <field name="objectType" column="objectType" type="string" length="255" />
-        
+
         <field name="published" column="published" type="datetime" nullable="true"/>
-        
+
         <field name="summary" column="summary" type="string" nullable="true"/>
-        
+
         <field name="updated" column="updated" type="datetime" nullable="true" />
-        
+
+        <field name="properties" column="properties" type="array" nullable="true" />
+
         <field name="url" column="url" type="string" length="255" nullable="true" />
-        
+
         <field name="downstreamDuplicates" column="downstreamDuplicates" type="array" nullable="true" />
-        
+
         <field name="upstreamDuplicates" column="upstreamDuplicates" type="array" nullable="true" />
-        
+
     </mapped-superclass>
 
 </doctrine-mapping>
