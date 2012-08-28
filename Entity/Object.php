@@ -2,6 +2,8 @@
 namespace Odl\ActivityStreamBundle\Entity;
 
 use Odl\ActivityStreamBundle\Model\Object as BaseObject;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class Object
     extends BaseObject
