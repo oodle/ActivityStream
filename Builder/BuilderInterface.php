@@ -12,7 +12,7 @@ interface BuilderInterface
      *
      * @throws UnsupportedException if object is not supported
      */
-	public function build($object) {}
+	public function build($object);
 
 	/**
 	 * Whether this builder supports the given user class
@@ -20,5 +20,10 @@ interface BuilderInterface
 	 * @param string $class
 	 * @return Boolean
 	 */
-	public function supportsClass($class) {}
+	public function supportsClass($class);
+
+	/**
+	 *
+	 */
+	public function supports($object);
 }
