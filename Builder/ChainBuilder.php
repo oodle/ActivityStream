@@ -1,6 +1,8 @@
 <?php
 namespace Odl\ActivityStreamBundle\Builder;
 
+use Odl\ActivityStreamBundle\Model\Object;
+
 use Odl\ActivityStreamBundle\Exception\UnsupportedException;
 
 /**
@@ -20,10 +22,10 @@ class ChainBuilder
     }
 
 
-    public function build($object) {
+    public function build($object, Object $activityObject = null) {
         foreach ($this->builders as $builder) {
             if ($builder->supports($object)) {
-                return $builder->build($object);
+                return $builder->build($object, $activityObject);
             }
         }
 
@@ -44,6 +46,16 @@ class ChainBuilder
         foreach ($this->builders as $builder) {
             if ($builder->supports($object)) {
                 return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getUniversalId($object) {
+        foreach ($this->builders as $builder) {
+            if ($builder->supports($object)) {
+                return $builder->getUniversalId($object);
             }
         }
 

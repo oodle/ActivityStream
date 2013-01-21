@@ -12,7 +12,9 @@ class Property
 
     public function getProperty($name)
     {
-        return $this->properties[$name];
+        if (isset($this->properties[$name])) {
+            return $this->properties[$name];
+        }
     }
 
     public function setProperty($name, $value)
